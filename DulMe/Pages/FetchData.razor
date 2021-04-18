@@ -9,13 +9,21 @@
 
 
 <TelerikGrid Data="@forecasts" 
-             Pageable="true" Height="400px" Sortable="true"
-             Groupable="true">
+             Pageable="true" Height="400px" Sortable="true" Groupable="true"
+             FilterMode="Telerik.Blazor.GridFilterMode.FilterRow"
+             Resizable="true" Reorderable="true"
+             >
     <GridColumns>
-        <GridColumn Field="@(nameof(WeatherForecast.Date))"></GridColumn>
-        <GridColumn Field="@(nameof(WeatherForecast.TemperatureC))"></GridColumn>
-        <GridColumn Field="@(nameof(WeatherForecast.TemperatureF))"></GridColumn>
-        <GridColumn Field="@(nameof(WeatherForecast.Summary))"></GridColumn>
+        <GridColumn Field="@(nameof(WeatherForecast.Date))" Width="200px"></GridColumn>
+        <GridColumn Field="@(nameof(WeatherForecast.TemperatureC))" Title="섭씨" Groupable="false"></GridColumn>
+        <GridColumn Field="@(nameof(WeatherForecast.TemperatureF))" Title="화씨" Groupable="false"></GridColumn>
+        <GridColumn Field="@(nameof(WeatherForecast.Summary))" Title="상태"></GridColumn>
+        <GridCommandColumn Width="200px" Reorderable="false">
+            <GridCommandButton Command="Save" Icon="save" ShowInEdit="true">Update</GridCommandButton>
+            <GridCommandButton Command="Edit" Icon="edit">Edit</GridCommandButton>
+            <GridCommandButton Command="Delete" Icon="delete">Delete</GridCommandButton>
+            <GridCommandButton Command="Cancel" Icon="cancel" ShowInEdit="true">Cancel</GridCommandButton>
+        </GridCommandColumn>
     </GridColumns>
 </TelerikGrid>
 
